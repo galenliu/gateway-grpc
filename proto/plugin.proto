@@ -1,0 +1,10 @@
+syntax = "proto3";
+package grpc;
+import "message.proto";
+option go_package = "../../gateway-grpc";
+
+service PluginServer {
+  // Sends another greeting
+  rpc PluginHandler (stream BaseMessage) returns (stream BaseMessage) {}
+}
+
