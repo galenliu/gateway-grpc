@@ -1,7 +1,7 @@
 syntax = "proto3";
-package grpc;
+
 import "message.proto";
-option go_package = "../../gateway-grpc";
+option go_package = "../../gateway-grpc;rpc";
 
 service PluginServer {
   // Sends another greeting

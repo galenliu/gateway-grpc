@@ -1,7 +1,7 @@
 syntax = "proto3";
-package grpc;
+
 import "messageType.proto";
-option go_package = "../../gateway-grpc";
+option go_package = "../../gateway-grpc;rpc";
 
 
 // The request message containing the user's name.
@@ -86,7 +86,7 @@ message DevicePropertyChangedNotificationMessage{
     string pluginId = 11;
     string adapterId = 12;
     string deviceId = 13;
-    PropertySchema property = 14;
+    Property property = 14;
   }
 }
 
@@ -114,9 +114,9 @@ message DeviceConnectedStateNotificationMessage{
 }
 
 
-message PropertySchema{
+message Property{
   string name = 92;
-  string AtType = 91;
+  string atType = 91;
   string  value = 93;
   string  title = 94;
   string  type = 95;
@@ -130,6 +130,36 @@ message PropertySchema{
   bytes links = 103;
 }
 
+message Device{
+  optional string atContext = 1;
+  optional  string atType = 2;
+  string id = 3;
+  optional string title = 4;
+  optional string description = 5;
+  repeated string links = 6;
+  string baseHref = 7;
+  DevicePin pin = 8;
+  bool  credentialsRequired = 9;
+
+  map<string, Property> properties = 11;
+  map<string, Action> actions = 12;
+  map<string, Event> events = 13;
+}
+
+message DevicePin{
+  bool required = 1;
+  string  pattern = 2;
+}
+
+message Action{
+
+}
+
+message Event {
+
+}
+
+
 message ActionDescription{
   string id = 1;
   string name = 2;
@@ -137,6 +167,5 @@ message ActionDescription{
   string status = 4;
   string timeRequested = 5;
   optional string  timeCompleted = 6;
-
 }
 

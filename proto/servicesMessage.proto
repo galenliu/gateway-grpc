@@ -1,7 +1,7 @@
 syntax = "proto3";
-package grpc;
+
 import "messageType.proto";
-option go_package = "../../gateway-grpc";
+option go_package = "../../gateway-grpc;rpc";
 
 message  ServiceAddedNotificationMessage{
   messageType messageType = 1;
