@@ -63,3 +63,13 @@ enum messageType{
   ServiceGetThingRequest = 81003;
   ServiceGetThingResponse = 81004;
 }
+
+enum type {
+  null = 0;
+  boolean = 1;
+  object = 2;
+  array = 3;
+  number = 4;
+  integer = 5;
+  string = 6;
+}

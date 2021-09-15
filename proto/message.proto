@@ -1,5 +1,5 @@
 syntax = "proto3";
-
+import "any.proto";
 import "messageType.proto";
 option go_package = "../../gateway-grpc;rpc";
 
@@ -115,35 +115,40 @@ message DeviceConnectedStateNotificationMessage{
 
 
 message Property{
-  string name = 92;
-  string atType = 91;
-  string  value = 93;
-  string  title = 94;
-  string  type = 95;
-  string  unit = 96;
-  string  description = 97;
-  string  minimum = 98;
-  string  maximum = 99;
-  string  enum = 100;
-  bool readOnly = 101;
-  bytes multipleOf = 102;
-  bytes links = 103;
+  optional  string name = 1;
+  optional  string atType = 2 [json_name = "@type"];
+  optional string  title = 3;
+  string  type = 4;
+  optional string  unit = 5;
+  optional  string  description = 6;
+  optional  string  minimum = 7;
+  optional  string  maximum = 8;
+  optional string  enum = 9;
+  optional  bool readOnly = 10;
+  optional  bytes multipleOf = 11;
+  repeated  link links = 103;
+  optional google.protobuf.Any  value = 12;
 }
 
 message Device{
-  optional string atContext = 1;
-  optional  string atType = 2;
+  optional string atContext = 1 [json_name = "@context"];
+  optional  string atType = 2 [json_name = "@type"];
   string id = 3;
   optional string title = 4;
   optional string description = 5;
-  repeated string links = 6;
+  repeated   link links = 6;
   string baseHref = 7;
   DevicePin pin = 8;
-  bool  credentialsRequired = 9;
+  map<string, Property> properties = 9;
+  map<string, Action> actions = 10;
+  map<string, Event> events = 11;
+  bool  credentialsRequired = 12;
+}
 
-  map<string, Property> properties = 11;
-  map<string, Action> actions = 12;
-  map<string, Event> events = 13;
+message link {
+  string href = 1;
+  string rel = 2;
+  string mediaType = 3;
 }
 
 message DevicePin{
@@ -152,11 +157,46 @@ message DevicePin{
 }
 
 message Action{
-
+  optional  string atType = 1 [json_name = "@type"];
+  optional string title = 2;
+  optional string description = 3;
+  repeated link links = 4;
+  optional google.protobuf.Any input = 5;
 }
 
-message Event {
 
+
+message ObjectActionInput{
+  string type = 1;
+  map<string, ActionInputProperty> properties = 2;
+}
+
+
+
+message ActionInputProperty{
+  optional string atType = 1[json_name = "@type"];
+  optional string type = 2;
+  optional string unit = 3;
+  optional float minimum = 4;
+  optional float maximum = 5;
+  optional float multipleOf = 6;
+  repeated google.protobuf.Any enum = 7;
+}
+
+
+
+message Event {
+  optional string atType = 1[json_name = "@type"];
+  optional string name = 2;
+  optional string title = 3;
+  optional string description = 4;
+  repeated   link links = 5;
+  string type = 6;
+  string unit = 7;
+  optional float minimum = 8;
+  optional float maximum = 9;
+  optional float multipleOf = 10;
+  repeated google.protobuf.Any enum = 11;
 }
 
 
@@ -167,5 +207,11 @@ message ActionDescription{
   string status = 4;
   string timeRequested = 5;
   optional string  timeCompleted = 6;
+}
+
+message EventDescription{
+  string name = 1;
+  google.protobuf.Any data = 2;
+  string  timestamp = 3;
 }
 

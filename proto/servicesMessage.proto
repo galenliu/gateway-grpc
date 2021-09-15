@@ -1,5 +1,4 @@
 syntax = "proto3";
-
 import "messageType.proto";
 option go_package = "../../gateway-grpc;rpc";
 
