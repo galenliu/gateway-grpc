@@ -35,27 +35,29 @@ message PluginRegisterResponseMessage{
   messageType messageType = 1;
   Data data = 2;
   message Data {
-    string pluginId = 11;
-    string gatewayVersion = 12;
-    UsrProfile userProfile = 13;
-    Preferences preferences = 14;
-    message UsrProfile{
-      string addonsDir = 21;
-      string  baseDir = 22 ;
-      string  configDir = 23;
-      string  dataDir = 24 ;
-      string  mediaDir = 25 ;
-      string  logDir = 26 ;
-      string  gatewayDir = 27 ;
-    }
-    message Preferences{
-      string language = 31;
-      Units units = 32;
-      message Units{
-        string temperature = 41;
-      }
-    }
+    string pluginId = 1;
+    string gatewayVersion = 2;
+    UsrProfile userProfile = 3;
+    Preferences preferences = 4;
   }
+}
+
+message Preferences{
+  string language = 1;
+  Units units = 2;
+  message Units{
+    string temperature = 1;
+  }
+}
+
+message UsrProfile{
+  string addonsDir = 1;
+  string  baseDir = 2 ;
+  string  configDir = 3;
+  string  dataDir = 4 ;
+  string  mediaDir = 5 ;
+  string  logDir = 6 ;
+  string  gatewayDir = 7 ;
 }
 
 message AdapterAddedNotificationMessage{
@@ -75,7 +77,7 @@ message DeviceAddedNotificationMessage{
   message Data{
     string pluginId = 1;
     string adapterId = 2;
-    bytes device = 3;
+    Device device = 3;
   }
 }
 
@@ -83,10 +85,10 @@ message DevicePropertyChangedNotificationMessage{
   messageType messageType = 1;
   Data data = 2;
   message Data{
-    string pluginId = 11;
-    string adapterId = 12;
-    string deviceId = 13;
-    Property property = 14;
+    string pluginId = 1;
+    string adapterId = 2;
+    string deviceId = 3;
+    Property property = 4;
   }
 }
 
@@ -115,27 +117,27 @@ message DeviceConnectedStateNotificationMessage{
 
 
 message Property{
-  optional  string name = 1;
-  optional  string atType = 2 [json_name = "@type"];
-  optional string  title = 3;
+  string name = 1;
+  string atType = 2 [json_name = "@type"];
+  string  title = 3;
   string  type = 4;
-  optional string  unit = 5;
-  optional  string  description = 6;
+  string  unit = 5;
+  string  description = 6;
   optional  string  minimum = 7;
   optional  string  maximum = 8;
-  optional string  enum = 9;
-  optional  bool readOnly = 10;
-  optional  bytes multipleOf = 11;
+  repeated google.protobuf.Any  enum = 9;
+  bool readOnly = 10;
+  bytes multipleOf = 11;
   repeated  link links = 103;
-  optional google.protobuf.Any  value = 12;
+  google.protobuf.Any  value = 12;
 }
 
 message Device{
-  optional string atContext = 1 [json_name = "@context"];
-  optional  string atType = 2 [json_name = "@type"];
+  string atContext = 1 [json_name = "@context"];
+  string atType = 2 [json_name = "@type"];
   string id = 3;
-  optional string title = 4;
-  optional string description = 5;
+  string title = 4;
+  string description = 5;
   repeated   link links = 6;
   string baseHref = 7;
   DevicePin pin = 8;
@@ -215,3 +217,60 @@ message EventDescription{
   string  timestamp = 3;
 }
 
+
+
+
+message ThingDescription{
+  string id = 1;
+  string title = 2;
+  string atContext = 3 [json_name = "@context"];
+  string atType = 4 [json_name = "@type"];
+  string description = 5;
+  string base = 6;
+  string baseHref = 7;
+  repeated   link links = 8;
+  DevicePin pin = 9;
+  map<string, PropertySchema> properties = 10;
+  map<string, ActionSchema> actions = 11;
+  map<string, EventSchema> events = 12;
+  bool  credentialsRequired = 13;
+  bool  floorplanVisibility = 14;
+  uint32 floorplanX = 15;
+  uint32 floorplanY = 16;
+  uint32 layoutIndex = 17;
+  string selectedCapability = 18;
+  string   iconHref = 19;
+  IconData iconData = 20;
+  string  security = 21;
+  SecurityDefinition securityDefinitions = 22;
+  string group_id = 23;
+}
+
+message PropertySchema {
+
+}
+
+message ActionSchema {
+
+}
+
+message EventSchema{
+
+}
+
+message  IconData {
+  string  data = 1;
+  string mime = 2;
+}
+
+message SecurityDefinition{
+  OAuth2  oauth2_sc = 1;
+}
+
+message OAuth2 {
+  string scheme = 1;
+  string flow = 2;
+  string authorization = 3;
+  string  token = 4;
+  repeated string scopes = 5;
+}
