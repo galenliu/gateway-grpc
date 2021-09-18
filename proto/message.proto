@@ -192,22 +192,7 @@ message ServiceGetThingResponseMessage {
 }
 
 
-message Property{
-  string name = 1;
-  string atType = 2 [json_name = "@type"];
-  string  title = 3;
-  string  type = 4;
-  string  unit = 5;
-  string  description = 6;
-  optional  string  minimum = 7;
-  optional  string  maximum = 8;
-  repeated google.protobuf.Any  enum = 9;
-  bool readOnly = 10;
-  bytes multipleOf = 11;
-  repeated  link links = 103;
-  google.protobuf.Any  value = 12;
-}
-
+// Device Message
 message Device{
   string atContext = 1 [json_name = "@context"];
   string atType = 2 [json_name = "@type"];
@@ -223,6 +208,23 @@ message Device{
   bool  credentialsRequired = 12;
 }
 
+message Property{
+  string name = 1;
+  string atType = 2 [json_name = "@type"];
+  string  title = 3;
+  string  type = 4;
+  string  unit = 5;
+  string  description = 6;
+  optional  string  minimum = 7;
+  optional  string  maximum = 8;
+  repeated bytes  enum = 9;
+  bool readOnly = 10;
+  bytes multipleOf = 11;
+  repeated  link links = 103;
+  bytes value = 12;
+}
+
+
 message link {
   string href = 1;
   string rel = 2;
@@ -235,11 +237,11 @@ message DevicePin{
 }
 
 message Action{
-  optional  string atType = 1 [json_name = "@type"];
-  optional string title = 2;
-  optional string description = 3;
+  string atType = 1 [json_name = "@type"];
+  string title = 2;
+  string description = 3;
   repeated link links = 4;
-  optional google.protobuf.Any input = 5;
+  optional bytes input = 5;
 }
 
 
@@ -252,28 +254,28 @@ message ObjectActionInput{
 
 
 message ActionInputProperty{
-  optional string atType = 1[json_name = "@type"];
-  optional string type = 2;
-  optional string unit = 3;
-  optional float minimum = 4;
-  optional float maximum = 5;
-  optional float multipleOf = 6;
-  repeated google.protobuf.Any enum = 7;
+  string atType = 1[json_name = "@type"];
+  string type = 2;
+  string unit = 3;
+  float minimum = 4;
+  float maximum = 5;
+  float multipleOf = 6;
+  repeated bytes enum = 7;
 }
 
 
 
 message Event {
-  optional string atType = 1[json_name = "@type"];
-  optional string name = 2;
-  optional string title = 3;
-  optional string description = 4;
+  string atType = 1[json_name = "@type"];
+  string name = 2;
+  string title = 3;
+  string description = 4;
   repeated   link links = 5;
   string type = 6;
   string unit = 7;
-  optional float minimum = 8;
-  optional float maximum = 9;
-  optional float multipleOf = 10;
+  float minimum = 8;
+  float maximum = 9;
+  float multipleOf = 10;
   repeated google.protobuf.Any enum = 11;
 }
 
@@ -294,8 +296,7 @@ message EventDescription{
 }
 
 
-
-
+// Thing
 message ThingDescription{
   string id = 1;
   string title = 2;
@@ -306,9 +307,9 @@ message ThingDescription{
   string baseHref = 7;
   repeated   link links = 8;
   DevicePin pin = 9;
-  map<string, PropertySchema> properties = 10;
-  map<string, ActionSchema> actions = 11;
-  map<string, EventSchema> events = 12;
+  map<string, Property> properties = 10;
+  map<string, Action> actions = 11;
+  map<string, Event> events = 12;
   bool  credentialsRequired = 13;
   bool  floorplanVisibility = 14;
   uint32 floorplanX = 15;
@@ -320,18 +321,6 @@ message ThingDescription{
   string  security = 21;
   SecurityDefinition securityDefinitions = 22;
   string group_id = 23;
-}
-
-message PropertySchema {
-
-}
-
-message ActionSchema {
-
-}
-
-message EventSchema{
-
 }
 
 message  IconData {
