@@ -116,6 +116,82 @@ message DeviceConnectedStateNotificationMessage{
 }
 
 
+message  ServiceAddedNotificationMessage{
+  messageType messageType = 1;
+  Data data = 2;
+  message Data{
+    string serviceId = 12;
+    string name = 13;
+    string packageName = 14;
+  }
+}
+
+message ServiceSetPropertyValueRequestMessage {
+  messageType messageType = 1;
+  Data data = 2;
+  message Data{
+    string pluginId = 11;
+    string serviceId = 12;
+    string thingId = 13;
+    string propertyName = 14;
+    bytes value = 15;
+  }
+}
+
+// service message
+message ServicePropertyChangedNotificationMessage {
+  messageType messageType = 1;
+  Data data = 2;
+  message Data{
+    string pluginId = 11;
+    string serviceId = 12;
+    string thingId = 13;
+    string propertyName = 14;
+    bytes value = 15;
+  }
+}
+
+message ServiceGetThingsRequestMessage {
+  messageType messageType = 1;
+  Data data = 2;
+  message Data{
+    string pluginId = 11;
+    string serviceId = 12;
+    string propertyName = 14;
+  }
+}
+
+message ServiceGetThingsResponseMessage {
+  messageType messageType = 1;
+  Data data = 2;
+  message Data{
+    string pluginId = 11;
+    string serviceId = 12;
+    bytes things = 14;
+  }
+}
+
+message ServiceGetThingRequestMessage {
+  messageType messageType = 1;
+  Data data = 2;
+  message Data{
+    string pluginId = 11;
+    string serviceId = 12;
+    string thingId = 13;
+  }
+}
+
+message ServiceGetThingResponseMessage {
+  messageType messageType = 1;
+  Data data = 2;
+  message Data{
+    string pluginId = 11;
+    string serviceId = 12;
+    bytes thing = 14;
+  }
+}
+
+
 message Property{
   string name = 1;
   string atType = 2 [json_name = "@type"];
