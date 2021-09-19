@@ -231,7 +231,6 @@ message Action{
   optional bytes input = 5;
 }
 
-
 message Event {
   string atType = 1[json_name = "@type"];
   string name = 2;
@@ -313,12 +312,10 @@ message ThingDescription{
   string selectedCapability = 18;
   string   iconHref = 19;
   IconData iconData = 20;
-  string  security = 21;
+  string  security = 21;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;
   SecurityDefinition securityDefinitions = 22;
   string group_id = 23;
 }
-
-
 
 message  IconData {
   string  data = 1;
