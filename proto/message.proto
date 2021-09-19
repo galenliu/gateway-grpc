@@ -224,25 +224,25 @@ message Property{
 }
 
 message Action{
-  optional  string atType = 1 [json_name = "@type"];
-  optional string title = 2;
-  optional string description = 3;
+  string atType = 1 [json_name = "@type"];
+  string title = 2;
+  string description = 3;
   repeated link links = 4;
-  optional google.protobuf.Any input = 5;
+  optional bytes input = 5;
 }
 
 
 message Event {
-  optional string atType = 1[json_name = "@type"];
-  optional string name = 2;
-  optional string title = 3;
-  optional string description = 4;
+  string atType = 1[json_name = "@type"];
+  string name = 2;
+  string title = 3;
+  string description = 4;
   repeated   link links = 5;
   string type = 6;
   string unit = 7;
-  optional float minimum = 8;
-  optional float maximum = 9;
-  optional float multipleOf = 10;
+  float minimum = 8;
+  float maximum = 9;
+  float multipleOf = 10;
   repeated google.protobuf.Any enum = 11;
 }
 
@@ -265,12 +265,12 @@ message ObjectActionInput{
 }
 
 message ActionInputProperty{
-  optional string atType = 1[json_name = "@type"];
-  optional string type = 2;
-  optional string unit = 3;
-  optional float minimum = 4;
-  optional float maximum = 5;
-  optional float multipleOf = 6;
+  string atType = 1[json_name = "@type"];
+  string type = 2;
+  string unit = 3;
+  float minimum = 4;
+  float maximum = 5;
+  float multipleOf = 6;
   repeated google.protobuf.Any enum = 7;
 }
 
@@ -280,7 +280,7 @@ message ActionDescription{
   optional bytes input = 3;
   string status = 4;
   string timeRequested = 5;
-  optional string  timeCompleted = 6;
+  string  timeCompleted = 6;
 }
 
 message EventDescription{
