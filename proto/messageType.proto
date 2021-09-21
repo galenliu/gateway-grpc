@@ -73,3 +73,14 @@ enum type {
   integer = 5;
   string = 6;
 }
+
+enum unit {
+  degreeCentigrade = 0;
+}
+
+enum language {
+  zh_cn = 0;
+  zh_hk = 1;
+  zh_tw = 2;
+  en_us = 3;
+}

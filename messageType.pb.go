@@ -298,6 +298,101 @@ func (Type) EnumDescriptor() ([]byte, []int) {
 	return file_messageType_proto_rawDescGZIP(), []int{1}
 }
 
+type Unit int32
+
+const (
+	Unit_degreeCentigrade Unit = 0
+)
+
+// Enum value maps for Unit.
+var (
+	Unit_name = map[int32]string{
+		0: "degreeCentigrade",
+	}
+	Unit_value = map[string]int32{
+		"degreeCentigrade": 0,
+	}
+)
+
+func (x Unit) Enum() *Unit {
+	p := new(Unit)
+	*p = x
+	return p
+}
+
+func (x Unit) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Unit) Descriptor() protoreflect.EnumDescriptor {
+	return file_messageType_proto_enumTypes[2].Descriptor()
+}
+
+func (Unit) Type() protoreflect.EnumType {
+	return &file_messageType_proto_enumTypes[2]
+}
+
+func (x Unit) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Unit.Descriptor instead.
+func (Unit) EnumDescriptor() ([]byte, []int) {
+	return file_messageType_proto_rawDescGZIP(), []int{2}
+}
+
+type Language int32
+
+const (
+	Language_zh_cn Language = 0
+	Language_zh_hk Language = 1
+	Language_zh_tw Language = 2
+	Language_en_us Language = 3
+)
+
+// Enum value maps for Language.
+var (
+	Language_name = map[int32]string{
+		0: "zh_cn",
+		1: "zh_hk",
+		2: "zh_tw",
+		3: "en_us",
+	}
+	Language_value = map[string]int32{
+		"zh_cn": 0,
+		"zh_hk": 1,
+		"zh_tw": 2,
+		"en_us": 3,
+	}
+)
+
+func (x Language) Enum() *Language {
+	p := new(Language)
+	*p = x
+	return p
+}
+
+func (x Language) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Language) Descriptor() protoreflect.EnumDescriptor {
+	return file_messageType_proto_enumTypes[3].Descriptor()
+}
+
+func (Language) Type() protoreflect.EnumType {
+	return &file_messageType_proto_enumTypes[3]
+}
+
+func (x Language) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Language.Descriptor instead.
+func (Language) EnumDescriptor() ([]byte, []int) {
+	return file_messageType_proto_rawDescGZIP(), []int{3}
+}
+
 var File_messageType_proto protoreflect.FileDescriptor
 
 var file_messageType_proto_rawDesc = []byte{
@@ -429,9 +524,14 @@ var file_messageType_proto_rawDesc = []byte{
 	0x10, 0x02, 0x12, 0x09, 0x0a, 0x05, 0x61, 0x72, 0x72, 0x61, 0x79, 0x10, 0x03, 0x12, 0x0a, 0x0a,
 	0x06, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x10, 0x04, 0x12, 0x0b, 0x0a, 0x07, 0x69, 0x6e, 0x74,
 	0x65, 0x67, 0x65, 0x72, 0x10, 0x05, 0x12, 0x0a, 0x0a, 0x06, 0x73, 0x74, 0x72, 0x69, 0x6e, 0x67,
-	0x10, 0x06, 0x42, 0x18, 0x5a, 0x16, 0x2e, 0x2e, 0x2f, 0x2e, 0x2e, 0x2f, 0x67, 0x61, 0x74, 0x65,
-	0x77, 0x61, 0x79, 0x2d, 0x67, 0x72, 0x70, 0x63, 0x3b, 0x72, 0x70, 0x63, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x10, 0x06, 0x2a, 0x1c, 0x0a, 0x04, 0x75, 0x6e, 0x69, 0x74, 0x12, 0x14, 0x0a, 0x10, 0x64, 0x65,
+	0x67, 0x72, 0x65, 0x65, 0x43, 0x65, 0x6e, 0x74, 0x69, 0x67, 0x72, 0x61, 0x64, 0x65, 0x10, 0x00,
+	0x2a, 0x36, 0x0a, 0x08, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65, 0x12, 0x09, 0x0a, 0x05,
+	0x7a, 0x68, 0x5f, 0x63, 0x6e, 0x10, 0x00, 0x12, 0x09, 0x0a, 0x05, 0x7a, 0x68, 0x5f, 0x68, 0x6b,
+	0x10, 0x01, 0x12, 0x09, 0x0a, 0x05, 0x7a, 0x68, 0x5f, 0x74, 0x77, 0x10, 0x02, 0x12, 0x09, 0x0a,
+	0x05, 0x65, 0x6e, 0x5f, 0x75, 0x73, 0x10, 0x03, 0x42, 0x18, 0x5a, 0x16, 0x2e, 0x2e, 0x2f, 0x2e,
+	0x2e, 0x2f, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x2d, 0x67, 0x72, 0x70, 0x63, 0x3b, 0x72,
+	0x70, 0x63, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -446,10 +546,12 @@ func file_messageType_proto_rawDescGZIP() []byte {
 	return file_messageType_proto_rawDescData
 }
 
-var file_messageType_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_messageType_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
 var file_messageType_proto_goTypes = []interface{}{
 	(MessageType)(0), // 0: messageType
 	(Type)(0),        // 1: type
+	(Unit)(0),        // 2: unit
+	(Language)(0),    // 3: language
 }
 var file_messageType_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -469,7 +571,7 @@ func file_messageType_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_messageType_proto_rawDesc,
-			NumEnums:      2,
+			NumEnums:      4,
 			NumMessages:   0,
 			NumExtensions: 0,
 			NumServices:   0,
