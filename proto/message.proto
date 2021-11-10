@@ -145,7 +145,7 @@ message ServicePropertyChangedNotificationMessage {
     string serviceId = 12;
     string thingId = 13;
     string propertyName = 14;
-    bytes value = 15;
+    any.Any value = 15;
   }
 }
 
@@ -220,7 +220,7 @@ message Property{
   bool readOnly = 10;
   float multipleOf = 11;
   repeated  link links = 103;
-  bytes  value = 12;
+  google.protobuf.Any  value = 12;
 }
 
 message Action{

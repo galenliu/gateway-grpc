@@ -2674,7 +2674,7 @@ type DeviceAddedNotificationMessage_Data struct {
 
 	PluginId  string  `protobuf:"bytes,1,opt,name=pluginId,proto3" json:"pluginId,omitempty"`
 	AdapterId string  `protobuf:"bytes,2,opt,name=adapterId,proto3" json:"adapterId,omitempty"`
-	Device    *Device `protobuf:"bytes,3,opt,name=device,proto3" json:"device,omitempty"`
+	Device    *Device `protobuf:"bytes,3,opt,name=addon,proto3" json:"addon,omitempty"`
 }
 
 func (x *DeviceAddedNotificationMessage_Data) Reset() {
@@ -4051,7 +4051,7 @@ var file_message_proto_depIdxs = []int32{
 	31, // 51: SecurityDefinition.oauth2_sc:type_name -> OAuth2
 	5,  // 52: PluginRegisterResponseMessage.Data.userProfile:type_name -> UsrProfile
 	4,  // 53: PluginRegisterResponseMessage.Data.preferences:type_name -> Preferences
-	18, // 54: DeviceAddedNotificationMessage.Data.device:type_name -> Device
+	18, // 54: DeviceAddedNotificationMessage.Data.addon:type_name -> Device
 	19, // 55: DevicePropertyChangedNotificationMessage.Data.property:type_name -> Property
 	26, // 56: DeviceActionStatusNotificationMessage.Data.action:type_name -> ActionDescription
 	19, // 57: Device.PropertiesEntry.value:type_name -> Property
